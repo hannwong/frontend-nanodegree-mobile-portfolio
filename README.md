@@ -9,12 +9,10 @@ There are 2 parts to this project. The first part uses PageSpeed Insights. The s
 Do ``npm install`` to install all Node.js modules needed.
 
 Do ``grunt`` to run ngrok and grunt-pagespeed.
+This will also resize images in ``views/images_src/`` and put needed images into ``views/images/``.
 
 I'm not sure why the numbers here (always 99 in score) is different from that on PageSpeed Insights website.
 
-I'm also not sure what is required for this part. PageSpeed Insights score fluctuates with network conditions.
-
-Help?!
 
 To measure using PageSpeed Insights website (rather than grunt-pagespeed)...
 
