@@ -508,7 +508,12 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+
+  // Use screen.height. Works no matter how user resizes browser.
+  var numOfRows = Math.floor(screen.height / s);
+  var numOfPizzas = numOfRows * cols;
+
+  for (var i = 0; i < numOfPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
