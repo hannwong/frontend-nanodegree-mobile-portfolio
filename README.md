@@ -33,20 +33,41 @@ Open a browser to location ``localhost:8000``, scroll and change pizza size.
 Metrics will output performance numbers on DevTool console.
 
 
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
+### Optimizations
 
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
+Optimizations are made to ``index.html``, ``views/js/main.js`` and ``views/pizza.html``.
 
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+#### ``index.html``
+
+``css/print.css`` is linked with ``media="print"`` so it doesn't get downloaded for screen.
+
+``analytics.js`` is loaded with ``async`` and ``defer`` so it doesn't block rendering.
+Analytics doesn't affect the DOM, so ``defer`` is used to get it loaded much later.
+
+``css/style.css`` is inlined so that it doesn't block render.
+This CSS file isn't too large, so it doesn't increase the download time for ``index.html`` very much.
+
+Google font is loaded much later, at the end of ``<body>`` element.
+This removes the render-blocking CSS load from the top (above-the-fold) of the document.
+
+``pizzeria.jpg`` is replaced with ``pizzeria_small.jpg``.
+Only a 100px wide image is needed.
+
+
+#### ``views/pizza.html``
+
+``pizzeria.jpg`` is replaced with ``pizzeria_medium.jpg``.
+Only a 720px by 540px image is needed at the largest.
+
+
+#### ``views/js/main.js``
+
+``updatePositions()`` now retrieves ``document.body.scrollTop outside of a for-loop.
+Forced reflow is removed.
+Also, a division math is computed outside the for-loop.
+
+``determineDx()`` is removed.
+It calculates the percentage width of an element, something that CSS already does very quickly.
+Consequently, a forced reflow is also removed.
+
+Number of sliding pizzas is reduced to just the right number needed by the screen height.
