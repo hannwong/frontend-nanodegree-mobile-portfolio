@@ -4,11 +4,28 @@ There are 2 parts to this project. The first part uses PageSpeed Insights. The s
 
 ### Getting started
 
-#### Part 1: Optimize PageSpeed Insights score for index.html
+#### Dependencies (pre-requisites you need)
+
+**GraphicsMagick**
+
+Install [GraphicsMagick](http://www.graphicsmagick.org).
+That can be done via [Homebrew](https://brew.sh).
+It can also be [compiled from source](http://www.graphicsmagick.org/INSTALL-unix.html) if you're on *Nix, or [installed from a binary](http://www.graphicsmagick.org/INSTALL-windows.html) if you're on Windows.
+
+**Node.js modules**
 
 Do ``npm install`` to install all Node.js modules needed.
 
+That will install every needed module, as listed in ``package.json``, except for one small piece --- the ``grunt-cli``.
+
+**grunt-cli** (command-line tool ``grunt``)
+
 Install ``grunt-cli`` globally by doing ``npm install -g grunt-cli``.
+
+(The ``grunt-cli`` gives you the *global command* `grunt`, which is like just a wrapper that loads the actual *Node.js module* ``grunt`` you decide to use for a particular project. In that way, you can use a different version of *Node.js module* ``grunt`` for each project, whichever version you deem appropriate.)
+
+
+#### Part 1: Optimize PageSpeed Insights score for index.html
 
 Do ``grunt`` to run ngrok and grunt-pagespeed.
 This will also resize images in ``views/images_src/`` and put needed images into ``views/images/``.
