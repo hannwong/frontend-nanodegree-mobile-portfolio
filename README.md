@@ -8,6 +8,8 @@ There are 2 parts to this project. The first part uses PageSpeed Insights. The s
 
 Do ``npm install`` to install all Node.js modules needed.
 
+Install ``grunt-cli`` globally by doing ``npm install -g grunt-cli``.
+
 Do ``grunt`` to run ngrok and grunt-pagespeed.
 This will also resize images in ``views/images_src/`` and put needed images into ``views/images/``.
 
