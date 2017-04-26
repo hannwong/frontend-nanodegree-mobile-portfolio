@@ -18,7 +18,7 @@ To measure using PageSpeed Insights website (rather than grunt-pagespeed)...
 
 Open another terminal and do ``python3 -m http.server``. This starts the web server at port 8000.
 
-Open a terminal and do ``ngrok http 8000``. This opens a tunnel to your computer, port 8000.
+In the original terminal, do ``nodue_modules/ngrok/bin/ngrok http 8000``. This opens a tunnel to your computer, port 8000.
 Copy the URL listed as *Forwarding*.
 
 Go to [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights)
