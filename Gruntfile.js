@@ -95,5 +95,5 @@ module.exports = function(grunt) {
   // Register default tasks
   grunt.loadNpmTasks('grunt-exec');
   grunt.registerTask('resize-images', ['exec:resize_images']);
-  grunt.registerTask('default', ['clean', 'copy', 'resize-images', 'psi-ngrok']);
+  grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'resize-images', 'psi-ngrok']);
 }
